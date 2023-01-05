@@ -243,11 +243,6 @@
 
 	}
 
-	.item__block {
-		height: 100%;
-		overflow: hidden;
-	}
-
 	.title {
 		/* text-transform: capitalize; */
 		font-weight: 500;
@@ -268,11 +263,10 @@
 		box-shadow: 0px 1px 2px 0px rgb(0 0 0 / 30%);
 	}
 
-	.noti__col--block {
+	.noti__col--item {
 		background-color: #fff;
 		display: block;
 		width: 100%;
-		height: 100%;
 		padding: 20px 0;
 		color: #333;
 		text-decoration: none;
@@ -281,66 +275,8 @@
 		box-shadow: 0px 1px 2px 0px rgb(0 0 0 / 30%);
 	}
 
-	.noti__col--list {
+	.noti__col--content {
 		min-height: 200px;
-		padding: 0 20px;
-	}
-
-	.noti__social--list {}
-
-	.noti__social--item {
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		text-decoration: none;
-		color: #333;
-		padding: 6px 0;
-	}
-
-	.social__img {
-		width: 40px;
-		height: 40px;
-		margin-right: 20px;
-	}
-
-	.social__title {}
-
-	.noti__col--item {
-		text-decoration: none;
-		color: #333;
-		/* padding: 0; */
-		display: flex;
-		padding: 10px 0;
-		align-items: center;
-	}
-
-	.noti__col--item:hover .noti__col--title h3 {
-		color: var(--e-context-primary-color);
-	}
-
-	.noti__col--item+.noti__col--item {
-		margin-top: 4px;
-		/* padding-top: 10px; */
-		border-top: 1px solid #eee;
-	}
-
-	.noti__col--img img {
-		width: 50px;
-		height: 50px;
-		object-fit: cover;
-		margin-right: 20px;
-
-	}
-
-	.noti__col--title h3 {
-		font-size: 15px;
-		line-height: 20px;
-		margin: 0;
-		overflow: hidden;
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 1;
-		--webkit-user-select: none;
 	}
 
 	.quict__item:hover {
@@ -424,7 +360,7 @@
 
 	.slieder-img {
 		width: 100%;
-		/* border-radius: 8px; */
+		border-radius: 8px;
 		height: 300px !important;
 		object-fit: cover;
 	}
@@ -493,6 +429,7 @@
 	.doct-item.active {
 		background-color: #27AE60;
 	}
+	
 </style>
 
 <?php
@@ -508,36 +445,23 @@ require_once(ABSPATH . 'wp-admin/admin-header.php');
 ?>
 
 <?php
-$getAPi = curl_init();
-$mediaUrl = 'https://amedigital.vn/wp-json/wp/v2/media';
-curl_setopt($getAPi, CURLOPT_URL, $mediaUrl);
-curl_setopt($getAPi, CURLOPT_RETURNTRANSFER, true);
+$ch = curl_init();
+$url = 'https://amedigital.vn/wp-json/wp/v2/media';
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-$resp = curl_exec($getAPi);
+$resp = curl_exec($ch);
 // echo $resp;
-if ($e = curl_error($getAPi)) {
+if ($e = curl_error($ch)) {
 	print_r($e);
 } else {
-	$listImage = json_decode($resp);
+	$decode = json_decode($resp);
 	// var_dump($decode);
 }
-curl_close($getAPi);
+curl_close($ch);
 ?>
+<!--  -->
 
-<?php
-$getAPi = curl_init();
-$postUrl = 'https://demo1.amedigital.vn/wp-json/wp/v2/posts';
-curl_setopt($getAPi, CURLOPT_URL, $postUrl);
-curl_setopt($getAPi, CURLOPT_RETURNTRANSFER, true);
-
-$resp = curl_exec($getAPi);
-if ($e = curl_error($getAPi)) {
-	print_r($e);
-} else {
-	$listPost = json_decode($resp);
-}
-curl_close($getAPi);
-?>
 
 
 <div class="wrap about-wrap">
@@ -566,44 +490,26 @@ curl_close($getAPi);
 			<div class="row">
 
 				<div class="col l-6">
-					<div class="item__block">
-						<div class="title__col">
-							<h3>
-								Giới thiệu về AME WEBSITE
-							</h3>
-						</div>
-						<div href="#" class="noti__col--block">
-							<div href="#" class="noti__col--list">
+					<div class="title__col">
+						<h3>
+							Thông báo
+						</h3>
+					</div>
+					<div href="#" class="noti__col--item">
+						<div href="#" class="noti__col--content">
 
-							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col l-6">
-					<div class="item__block">
-						<div class="title__col">
-							<h3>
-								Tin tức
-							</h3>
-						</div>
-						<div class="noti__col--block">
-							<div class="noti__col--list">
-								<?php if (!empty($listPost)) {
-									foreach ($listPost as $key => $post) {
-										if ($key <= 2) {
-								?>
-											<a href="#" class="noti__col--item">
-												<div class="noti__col--img">
-													<img src=<?php echo $post->title->rendered ?> />
-												</div>
-												<div class="noti__col--title">
-													<h3><?php echo $post->title->rendered ?></h3>
-												</div>
-											</a>
-								<?php }
-									}
-								} ?>
-							</div>
+					<div class="title__col">
+						<h3>
+							Tin tức
+						</h3>
+					</div>
+					<div href="#" class="noti__col--item">
+						<div href="#" class="noti__col--content">
+
 						</div>
 					</div>
 				</div>
@@ -629,7 +535,64 @@ curl_close($getAPi);
 								<img src=<?php echo plugins_url('/img/text.png', __FILE__) ?> />
 							</div>
 							<div class="quict__item--title">
-								<p>Tùy biến nội dung</p>
+								<p>Tùy biến Text</p>
+							</div>
+							<div class="quict__item--link">
+								<p>
+									<span>
+										Xem
+									</span>
+									<i class="fa-solid fa-arrow-right-long quict__item--icon"></i>
+								</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="col l-4">
+						<a href="#" class="quict__item">
+							<div class="quict__item--img">
+								<img src="<?php echo plugins_url('/img/image.png', __FILE__) ?>" />
+							</div>
+							<div class="quict__item--title">
+								<p>Tùy biến hình ảnh</p>
+							</div>
+							<div class="quict__item--link">
+								<p>
+									<span>
+										Xem
+									</span>
+									<i class="fa-solid fa-arrow-right-long quict__item--icon"></i>
+								</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="col l-4">
+						<a href="#" class="quict__item">
+							<div class="quict__item--img">
+								<img src="<?php echo plugins_url('/img/link.png', __FILE__) ?>" />
+							</div>
+							<div class="quict__item--title">
+								<p>Tùy biến Link</p>
+							</div>
+							<div class="quict__item--link">
+								<p>
+									<span>
+										Xem
+									</span>
+									<i class="fa-solid fa-arrow-right-long quict__item--icon"></i>
+								</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="col l-4">
+						<a href="#" class="quict__item">
+							<div class="quict__item--img">
+								<img src="<?php echo plugins_url('/img/color.png', __FILE__) ?> " />
+							</div>
+							<div class="quict__item--title">
+								<p>Tùy biến màu sắc</p>
 							</div>
 							<div class="quict__item--link">
 								<p>
@@ -680,65 +643,6 @@ curl_close($getAPi);
 						</a>
 					</div>
 
-					<div class="col l-4">
-						<a href="#" class="quict__item">
-							<div class="quict__item--img">
-								<img src="<?php echo plugins_url('/img/image.png', __FILE__) ?>" />
-							</div>
-							<div class="quict__item--title">
-								<p>Media </p>
-							</div>
-							<div class="quict__item--link">
-								<p>
-									<span>
-										Xem
-									</span>
-									<i class="fa-solid fa-arrow-right-long quict__item--icon"></i>
-								</p>
-							</div>
-						</a>
-					</div>
-
-					<div class="col l-4">
-						<a href="#" class="quict__item">
-							<div class="quict__item--img">
-								<img src="<?php echo plugins_url('/img/user.png', __FILE__) ?>" />
-							</div>
-							<div class="quict__item--title">
-								<p>User</p>
-							</div>
-							<div class="quict__item--link">
-								<p>
-									<span>
-										Xem
-									</span>
-									<i class="fa-solid fa-arrow-right-long quict__item--icon"></i>
-								</p>
-							</div>
-						</a>
-					</div>
-
-					<div class="col l-4">
-						<a href="#" class="quict__item">
-							<div class="quict__item--img">
-								<img src="<?php echo plugins_url('/img/setting.png', __FILE__) ?> " />
-							</div>
-							<div class="quict__item--title">
-								<p>Cài đặt</p>
-							</div>
-							<div class="quict__item--link">
-								<p>
-									<span>
-										Xem
-									</span>
-									<i class="fa-solid fa-arrow-right-long quict__item--icon"></i>
-								</p>
-							</div>
-						</a>
-					</div>
-
-
-
 				</div>
 			</div>
 
@@ -751,8 +655,8 @@ curl_close($getAPi);
 			<div class="slider">
 				<div class="slider-wrap">
 					<div class="slider-main">
-						<?php if (!empty($listImage)) {
-							foreach ($listImage as $item) {
+						<?php if (!empty($decode)) {
+							foreach ($decode as $item) {
 						?>
 								<div class="slider-item">
 									<img src=<?php echo $item->guid->rendered ?> alt="" class="slieder-img">
@@ -769,8 +673,8 @@ curl_close($getAPi);
 				</div>
 				<div class="doct-slider">
 					<ul class="list-doct">
-						<?php if (!empty($listImage)) {
-							foreach ($listImage as $key => $item) {
+						<?php if (!empty($decode)) {
+							foreach ($decode as $key => $item) {
 						?>
 								<li data-index="<?php echo $key ?>" class="doct-item <?php if ($key == 0) echo 'active' ?>"></li>
 						<?php }
@@ -797,74 +701,33 @@ curl_close($getAPi);
 			<div class="row">
 
 				<div class="col l-6">
-					<div class="item__block">
-						<div class="title__col">
-							<h3>
-								THÔNG TIN LIÊN HỆ
-							</h3>
-						</div>
-						<div href="#" class="noti__col--block">
-							<div href="#" class="noti__col--list">
-
-							</div>
+					<div class="title__col">
+						<h3>
+							Thông tin liên hệ
+						</h3>
+					</div>
+					<div href="#" class="noti__col--item">
+						<div href="#" class="noti__col--content">
+							<p>AME Digital trực thuộc Công ty CP Đầu tư công nghệ và Chuyển đổi số AlphaGroup.</p>
+							<p>AME Digital trực thuộc Công ty CP Đầu tư công nghệ và Chuyển đổi số AlphaGroup.</p>
 						</div>
 					</div>
 				</div>
 				<div class="col l-6">
-					<div class="item__block">
-						<div class="title__col">
-							<h3>
-								THEO DÕI CHÚNG TÔI
-							</h3>
-						</div>
-						<div href="#" class="noti__col--block">
-							<div href="#" class="noti__col--list">
-								<div href="#" class="noti__social--list">
-									<a href="https://www.facebook.com/amedigital.vn" class="noti__social--item">
-										<div class="social__img">
-											<img src=<?php echo plugins_url('/img/icon_face.png', __FILE__) ?> />
-										</div>
-										<div class="social__title">
-											<p>AME Digital Marketing</p>
-										</div>
-									</a>
-									<a href="https://www.youtube.com/channel/UC6NmmjmlmMznsrO-2AdTjQw" class="noti__social--item">
-										<div class="social__img">
-											<img src=<?php echo plugins_url('/img/icon_youtube.png', __FILE__) ?> />
-										</div>
-										<div class="social__title">
-											<p>AME Digital</p>
-										</div>
-									</a>
-									<a href="https://www.linkedin.com/company/amedigital/" class="noti__social--item">
-										<div class="social__img">
-											<img src=<?php echo plugins_url('/img/icon_likein.png', __FILE__) ?> />
-										</div>
-										<div class="social__title">
-											<p>AME Digital</p>
-										</div>
-									</a>
-									<a href="https://www.instagram.com/amedigital.vn/" class="noti__social--item">
-										<div class="social__img">
-											<img src=<?php echo plugins_url('/img/icon_insta.png', __FILE__) ?> />
-										</div>
-										<div class="social__title">
-											<p>AME Digital Vn</p>
-										</div>
-									</a>
-									<a href="https://www.linkedin.com/company/amedigital/" class="noti__social--item">
-										<div class="social__img">
-											<img src=<?php echo plugins_url('/img/icon_likein.png', __FILE__) ?> />
-										</div>
-										<div class="social__title">
-											<p>AME Digital</p>
-										</div>
-									</a>
-								</div>
-							</div>
+					<div class="title__col">
+						<h3>
+							Theo dõi chúng tôi
+						</h3>
+					</div>
+					<div href="#" class="noti__col--item">
+						<div href="#" class="noti__col--content">
+
 						</div>
 					</div>
 				</div>
+
+			</div>
+		</div>
 		<div class="wrapper">
 				<input type="checkbox" />
 				<div class="icon" style="margin-top:-50px"><lottie-player src="https://assets3.lottiefiles.com/packages/lf20_KYGZ3gt17d.json"  background="transparent"  speed="1"  style="width: 80px; height: 80px;"  loop  autoplay></lottie-player></div>
@@ -876,9 +739,8 @@ curl_close($getAPi);
 				</div>
 					</div>
 					</div>
+
 </div>
-	</div>
-	
 
 <footer>
 	<script type="text/javascript">
