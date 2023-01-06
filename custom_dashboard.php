@@ -526,7 +526,7 @@ curl_close($getAPi);
 
 <?php
 $getAPi = curl_init();
-$postUrl = 'https://demo1.amedigital.vn/wp-json/wp/v2/posts';
+$postUrl = 'https://amedigital.vn/wp-json/wp/v2/posts';
 curl_setopt($getAPi, CURLOPT_URL, $postUrl);
 curl_setopt($getAPi, CURLOPT_RETURNTRANSFER, true);
 
@@ -588,13 +588,22 @@ curl_close($getAPi);
 						</div>
 						<div class="noti__col--block">
 							<div class="noti__col--list">
+							<?php if (!empty($listImage)) {
+							foreach ($listImage as $key => $item) {
+						?>
+							
+						<?php
+						
+
+					}}?>
 								<?php if (!empty($listPost)) {
 									foreach ($listPost as $key => $post) {
 										if ($key <= 2) {
 								?>
+								
 											<a href="#" class="noti__col--item">
 												<div class="noti__col--img">
-													<img src=<?php echo $post->title->rendered ?> />
+													<img src=<?php echo $item->guid->rendered ?> alt="">
 												</div>
 												<div class="noti__col--title">
 													<h3><?php echo $post->title->rendered ?></h3>
