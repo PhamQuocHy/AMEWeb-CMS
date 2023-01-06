@@ -666,22 +666,15 @@ curl_close($getAPi);
 						</div>
 						<div class="noti__col--block">
 							<div class="noti__col--list">
-							<?php if (!empty($listImage)) {
-							foreach ($listImage as $key => $item) {
-						?>
-							
-						<?php
-						
 
-					}}?>
 								<?php if (!empty($listPost)) {
 									foreach ($listPost as $key => $post) {
 										if ($key <= 2) {
 								?>
-								
+
 											<a href="#" class="noti__col--item">
 												<div class="noti__col--img">
-													<img src=<?php echo $item->guid->rendered ?> alt="">
+													<img src=<?php echo plugins_url('/img/post.png', __FILE__) ?> alt="">
 												</div>
 												<div class="noti__col--title">
 													<h3><?php echo $post->title->rendered ?></h3>
