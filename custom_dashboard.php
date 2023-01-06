@@ -2,156 +2,187 @@
 	* {
 		box-sizing: inherit;
 	}
+
+	a:focus {
+		border: none;
+	}
+
 	:root {
-  --background: #4285f4;
-  --icon-color: #344955;
-  --width: 50px;
-  --height: 50px;
-  --border-radius: 100%;
-  
-}
+		--background: #4285f4;
+		--icon-color: #344955;
+		--width: 50px;
+		--height: 50px;
+		--border-radius: 100%;
+
+	}
+
 	.wrapper {
-  width: var(--width);
-  height: var(--height);
-  position: relative;
-  border-radius: var(--border-radius);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 6rem;
-  margin-left: 98%;
-  margin-top: -10%;
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
+		width: var(--width);
+		height: var(--height);
+		position: relative;
+		border-radius: var(--border-radius);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 6rem;
+		margin-left: 98%;
+		margin-top: -10%;
+		position: fixed;
+		bottom: 25px;
+		right: 25px;
 
-}
-.wrapper .fab {
-  background: var(--background);
-  width: var(--width);
-  height: var(--height);
-  position: relative;
-  z-index: 3;
-  border-radius: var(--border-radius);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  display: flex;
-  
-  justify-content: center;
-  align-items: center;
-  animation: fab-animation-reverse 0.4s ease-out forwards;
-}
-.wrapper .fab::before, .wrapper .fab::after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-radius: 4px;
-  background: #fff;
-}
-.wrapper .fab::before {
-  width: 4px;
-  height: 18px;
-}
-.wrapper .fab::after {
-  width: 18px;
-  height: 4px;
-}
-.wrapper .fac {
-  width: 32px;
-  height: 150px;
-  border-radius: 64px;
-  position: absolute;
-  
-  z-index: 2;
-  padding: 0.5rem 0.5rem;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); */
-  opacity: 0;
-  top: -110px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  /* margin-top: -40px; */
-  transition: opacity 0.2s ease-in, top 0.2s ease-in, width 0.1s ease-in;
-  
-}
-.wrapper .fac a {
-  color: var(--icon-color);
-  /* opacity: 0.8; */
+	}
 
-}
-.wrapper .fac a:hover {
-  transition: 0.2s;
-  opacity: 1;
-  /* color: #30444f; */
-}
-.wrapper input {
-  height: 100%;
-  width: 100%;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  position: absolute;
-  z-index: 5;
-  opacity: 0;
-}
-.wrapper input:checked ~ .fab {
-  animation: fab-animation 0.4s ease-out forwards;
-}
-.wrapper input:checked ~ .fac {
-  width: 32px;
-  height: 150px;
-  animation: fac-animation 0.4s ease-out forwards 0.1s;
-  top: -180px;
-  opacity: 1;
-}
+	.wrapper .fab {
+		background: var(--background);
+		width: var(--width);
+		height: var(--height);
+		position: relative;
+		z-index: 3;
+		border-radius: var(--border-radius);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+		display: flex;
 
-@keyframes fab-animation {
-  0% {
-    transform: rotate(0) scale(1);
-  }
-  20% {
-    transform: rotate(60deg) scale(0.93);
-  }
-  55% {
-    transform: rotate(35deg) scale(0.97);
-  }
-  80% {
-    transform: rotate(48deg) scale(0.94);
-  }
-  100% {
-    transform: rotate(45deg) scale(0.95);
-  }
-}
-@keyframes fab-animation-reverse {
-  0% {
-    transform: rotate(45deg) scale(0.95);
-  }
-  20% {
-    transform: rotate(-15deg);
-  }
-  55% {
-    transform: rotate(10deg);
-  }
-  80% {
-    transform: rotate(-3deg);
-  }
-  100% {
-    transform: rotate(0) scale(1);
-  }
-}
-@keyframes fac-animation {
-  0% {
-    transform: scale(1, 1);
-  }
-  33% {
-    transform: scale(0.95, 1.05);
-  }
-  66% {
-    transform: scale(1.05, 0.95);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
-} 
+		justify-content: center;
+		align-items: center;
+		animation: fab-animation-reverse 0.4s ease-out forwards;
+	}
+
+	.wrapper .fab::before,
+	.wrapper .fab::after {
+		content: "";
+		display: block;
+		position: absolute;
+		border-radius: 4px;
+		background: #fff;
+	}
+
+	.wrapper .fab::before {
+		width: 4px;
+		height: 18px;
+	}
+
+	.wrapper .fab::after {
+		width: 18px;
+		height: 4px;
+	}
+
+	.wrapper .fac {
+		width: 32px;
+		height: 150px;
+		border-radius: 64px;
+		position: absolute;
+
+		z-index: 2;
+		padding: 0.5rem 0.5rem;
+		/* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); */
+		opacity: 0;
+		top: -110px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		/* margin-top: -40px; */
+		transition: opacity 0.2s ease-in, top 0.2s ease-in, width 0.1s ease-in;
+
+	}
+
+	.wrapper .fac a {
+		color: var(--icon-color);
+		/* opacity: 0.8; */
+
+	}
+
+	.wrapper .fac a:hover {
+		transition: 0.2s;
+		opacity: 1;
+		/* color: #30444f; */
+	}
+
+	.wrapper input {
+		height: 100%;
+		width: 100%;
+		border-radius: var(--border-radius);
+		cursor: pointer;
+		position: absolute;
+		z-index: 5;
+		opacity: 0;
+	}
+
+	.wrapper input:checked~.fab {
+		animation: fab-animation 0.4s ease-out forwards;
+	}
+
+	.wrapper input:checked~.fac {
+		width: 32px;
+		height: 150px;
+		animation: fac-animation 0.4s ease-out forwards 0.1s;
+		top: -180px;
+		opacity: 1;
+	}
+
+	@keyframes fab-animation {
+		0% {
+			transform: rotate(0) scale(1);
+		}
+
+		20% {
+			transform: rotate(60deg) scale(0.93);
+		}
+
+		55% {
+			transform: rotate(35deg) scale(0.97);
+		}
+
+		80% {
+			transform: rotate(48deg) scale(0.94);
+		}
+
+		100% {
+			transform: rotate(45deg) scale(0.95);
+		}
+	}
+
+	@keyframes fab-animation-reverse {
+		0% {
+			transform: rotate(45deg) scale(0.95);
+		}
+
+		20% {
+			transform: rotate(-15deg);
+		}
+
+		55% {
+			transform: rotate(10deg);
+		}
+
+		80% {
+			transform: rotate(-3deg);
+		}
+
+		100% {
+			transform: rotate(0) scale(1);
+		}
+	}
+
+	@keyframes fac-animation {
+		0% {
+			transform: scale(1, 1);
+		}
+
+		33% {
+			transform: scale(0.95, 1.05);
+		}
+
+		66% {
+			transform: scale(1.05, 0.95);
+		}
+
+		100% {
+			transform: scale(1, 1);
+		}
+	}
+
 	.grid {
 		width: 100%;
 		display: block;
@@ -493,6 +524,53 @@
 	.doct-item.active {
 		background-color: #27AE60;
 	}
+
+	/*  */
+
+	.info__list {}
+
+	.info__heading {
+		border-bottom: 1px solid #ccc;
+		padding-bottom: 10px;
+	}
+
+	.info__img img {
+		width: 100%;
+		height: 100px;
+		object-fit: contain;
+	}
+
+	.info__content {
+		padding-top: 10px;
+	}
+
+
+	.info__content--item {}
+
+	.bd-l {
+		border-left: 1px solid #ccc;
+	}
+
+	.info__content--item a {
+		display: block;
+	}
+
+	.info__content--item a:hover {
+		color: var(--e-context-primary-color);
+	}
+
+	.info__content--item p {
+		margin: 0;
+	}
+
+	.info__content--item p,
+	.info__content--item a {
+		text-align: justify;
+		text-decoration: none;
+		line-height: 20px;
+		color: #333;
+		font-size: 16px;
+	}
 </style>
 
 <?php
@@ -542,8 +620,8 @@ curl_close($getAPi);
 
 <div class="wrap about-wrap">
 	<div class="wrap-content flex-block">
-	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-	<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_5bdohwx8.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px; margin-left: -20px; padding-right: 20px;"  loop autoplay></lottie-player>
+		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_5bdohwx8.json" background="transparent" speed="1" style="width: 100px; height: 100px; margin-left: -20px; padding-right: 20px;" loop autoplay></lottie-player>
 		<div class="noti-content">
 			<h3><?php _e("You haven't finished setting up your site."); ?></h3>
 
@@ -803,13 +881,47 @@ curl_close($getAPi);
 								THÔNG TIN LIÊN HỆ
 							</h3>
 						</div>
-						<div href="#" class="noti__col--block">
-							<div href="#" class="noti__col--list">
+						<div class="noti__col--block">
+							<div class="noti__col--list">
+								<div class="info__list">
+									<div class="info__heading">
+										<a href="https://amedigital.vn/" target="_blank" class="info__img">
+											<img src=<?php echo plugins_url('/img/ame_logo.png', __FILE__) ?> />
+										</a>
+									</div>
+									<div class="info__content">
+										<div class="grid">
+											<div class="row">
+												<div class="col l-4">
+													<div class="info__content--item">
+														<a href="https://alphasoftware.vn/" target="_blank">AME Digital trực thuộc Công ty CP Đầu tư công nghệ và Chuyển đổi số AlphaGroup.</a>
+													</div>
+												</div>
+												<div class="col l-4 bd-l">
+													<div class="info__content--item">
+														<p>Tầng 3, B18 QL1A, KDC TTVH Tây Đô, Hưng Thạnh, Cái Răng, Cần Thơ.</p>
+													</div>
+												</div>
+												<div class="col l-4 bd-l">
+													<div class="info__content--item">
+														<a href="#" target="_blank">info@amedigital.vn</a>
+														<a href="#" target="_blank">amedigital.vn</a>
+														<a href="#" target="_blank">0292 888 1929</a>
+													</div>
+												</div>
+											</div>
 
+										</div>
+
+									</div>
+								</div>
 							</div>
+
 						</div>
 					</div>
 				</div>
+
+
 				<div class="col l-6">
 					<div class="item__block">
 						<div class="title__col">
@@ -820,7 +932,7 @@ curl_close($getAPi);
 						<div href="#" class="noti__col--block">
 							<div href="#" class="noti__col--list">
 								<div href="#" class="noti__social--list">
-									<a href="https://www.facebook.com/amedigital.vn" class="noti__social--item">
+									<a target="_blank" href="https://www.facebook.com/amedigital.vn" class="noti__social--item">
 										<div class="social__img">
 											<img src=<?php echo plugins_url('/img/icon_face.png', __FILE__) ?> />
 										</div>
@@ -828,7 +940,7 @@ curl_close($getAPi);
 											<p>AME Digital Marketing</p>
 										</div>
 									</a>
-									<a href="https://www.youtube.com/channel/UC6NmmjmlmMznsrO-2AdTjQw" class="noti__social--item">
+									<a target="_blank" href="https://www.youtube.com/channel/UC6NmmjmlmMznsrO-2AdTjQw" class="noti__social--item">
 										<div class="social__img">
 											<img src=<?php echo plugins_url('/img/icon_youtube.png', __FILE__) ?> />
 										</div>
@@ -836,7 +948,7 @@ curl_close($getAPi);
 											<p>AME Digital</p>
 										</div>
 									</a>
-									<a href="https://www.linkedin.com/company/amedigital/" class="noti__social--item">
+									<a target="_blank" href="https://www.linkedin.com/company/amedigital/" class="noti__social--item">
 										<div class="social__img">
 											<img src=<?php echo plugins_url('/img/icon_likein.png', __FILE__) ?> />
 										</div>
@@ -844,7 +956,7 @@ curl_close($getAPi);
 											<p>AME Digital</p>
 										</div>
 									</a>
-									<a href="https://www.instagram.com/amedigital.vn/" class="noti__social--item">
+									<a target="_blank" href="https://www.instagram.com/amedigital.vn/" class="noti__social--item">
 										<div class="social__img">
 											<img src=<?php echo plugins_url('/img/icon_insta.png', __FILE__) ?> />
 										</div>
@@ -852,7 +964,7 @@ curl_close($getAPi);
 											<p>AME Digital Vn</p>
 										</div>
 									</a>
-									<a href="https://www.linkedin.com/company/amedigital/" class="noti__social--item">
+									<a target="_blank" href="https://www.linkedin.com/company/amedigital/" class="noti__social--item">
 										<div class="social__img">
 											<img src=<?php echo plugins_url('/img/icon_likein.png', __FILE__) ?> />
 										</div>
@@ -865,106 +977,106 @@ curl_close($getAPi);
 						</div>
 					</div>
 				</div>
-		<div class="wrapper">
-				<input type="checkbox" />
-				<div class="icon" style="margin-top:-50px"><lottie-player src="https://assets3.lottiefiles.com/packages/lf20_KYGZ3gt17d.json"  background="transparent"  speed="1"  style="width: 80px; height: 80px;"  loop  autoplay></lottie-player></div>
-				<div class="fac" style="margin-top: -50px">
-					<a href="https://amedigital.vn"><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-book.png', __FILE__) ?>"/></a>
-					<a href="https://www.facebook.com/amedigital.vn"><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-face.png', __FILE__) ?>"/></a>
-					<a href="tel: 0292 8881 929"><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-phone.png', __FILE__) ?>"/></a>
-					<a href="https://www.facebook.com/messages/t/305273516225421"><img style="width: 40px; height: 40px;" src="<?php echo plugins_url('/img/icon-mess.png', __FILE__) ?>"/></a>
+				<div class="wrapper">
+					<input type="checkbox" />
+					<div class="icon" style="margin-top:-50px"><lottie-player src="https://assets3.lottiefiles.com/packages/lf20_KYGZ3gt17d.json" background="transparent" speed="1" style="width: 80px; height: 80px;" loop autoplay></lottie-player></div>
+					<div class="fac" style="margin-top: -50px">
+						<a href="https://amedigital.vn"><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-book.png', __FILE__) ?>" /></a>
+						<a href="https://www.facebook.com/amedigital.vn"><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-face.png', __FILE__) ?>" /></a>
+						<a href="tel: 0292 8881 929"><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-phone.png', __FILE__) ?>" /></a>
+						<a href="https://www.facebook.com/messages/t/305273516225421"><img style="width: 40px; height: 40px;" src="<?php echo plugins_url('/img/icon-mess.png', __FILE__) ?>" /></a>
+					</div>
 				</div>
-					</div>
-					</div>
-</div>
+			</div>
+		</div>
 	</div>
-	
-
-<footer>
-	<script type="text/javascript">
-		window.addEventListener('load', function() {
-			const $ = document.querySelector.bind(document);
-			const $$ = document.querySelectorAll.bind(document);
-			const slider = $('.slider');
-			const sliderMain = $('.slider-main');
-			const nextBtn = $('.next-btn');
-			const prevBtn = $('.prev-btn');
-			const sliderItems = $$('.slider-item');
-			const doctItem = $$('.doct-item');
-			let positionX = 0;
-			let index = 0;
-
-			const sliderItemWidth = sliderItems[0].offsetWidth;
-			const slidersItemLenght = sliderItems.length;
-			const slidersLenght = sliderItemWidth * slidersItemLenght;
 
 
+	<footer>
+		<script type="text/javascript">
+			window.addEventListener('load', function() {
+				const $ = document.querySelector.bind(document);
+				const $$ = document.querySelectorAll.bind(document);
+				const slider = $('.slider');
+				const sliderMain = $('.slider-main');
+				const nextBtn = $('.next-btn');
+				const prevBtn = $('.prev-btn');
+				const sliderItems = $$('.slider-item');
+				const doctItem = $$('.doct-item');
+				let positionX = 0;
+				let index = 0;
 
-			nextBtn.onclick = function() {
-				nextSlider();
-			}
+				const sliderItemWidth = sliderItems[0].offsetWidth;
+				const slidersItemLenght = sliderItems.length;
+				const slidersLenght = sliderItemWidth * slidersItemLenght;
 
-			prevBtn.onclick = function() {
-				prevSlider();
-			}
 
-			setInterval(function() {
-				nextSlider();
-			}, 3000);
 
-			sliderItems.forEach(function(sliderItem) {
-				sliderItem.onclick = function() {
+				nextBtn.onclick = function() {
 					nextSlider();
 				}
-			})
 
-			doctItem.forEach(function(e) {
-				e.onclick = function() {
-					let docActive = Number(e.dataset.index);
-					positionX = (-(docActive * sliderItemWidth) + sliderItemWidth);
-					index = docActive - 1;
+				prevBtn.onclick = function() {
+					prevSlider();
+				}
+
+				setInterval(function() {
 					nextSlider();
-					console.log(positionX, index)
-				}
+				}, 3000);
 
-			})
+				sliderItems.forEach(function(sliderItem) {
+					sliderItem.onclick = function() {
+						nextSlider();
+					}
+				})
 
-			function nextSlider() {
-				index++;
-				positionX -= sliderItemWidth;
-				if (index >= slidersItemLenght) {
-					index = 0;
-					positionX = 0;
-				}
-				dotActiveSlider();
-				sliderMain.style.transform = `translateX(${positionX}px)`;
-
-			}
-
-			function prevSlider() {
-				index--;
-				positionX += sliderItemWidth;
-				if (index < 0) {
-					index = slidersItemLenght - 1;
-					positionX = -(slidersLenght - sliderItemWidth);
-				}
-				dotActiveSlider();
-				sliderMain.style.transform = `translateX(${positionX}px)`;
-			}
-
-			function dotActiveSlider() {
 				doctItem.forEach(function(e) {
-					let docActive = Number(e.dataset.index);
-					if (index === (docActive)) {
-						$('.doct-item.active').classList.remove('active');
-
-						e.classList.add('active')
+					e.onclick = function() {
+						let docActive = Number(e.dataset.index);
+						positionX = (-(docActive * sliderItemWidth) + sliderItemWidth);
+						index = docActive - 1;
+						nextSlider();
+						console.log(positionX, index)
 					}
 
 				})
-			}
-		})
-	</script>
-</footer>
 
-<?php include(ABSPATH . 'wp-admin/admin-footer.php');
+				function nextSlider() {
+					index++;
+					positionX -= sliderItemWidth;
+					if (index >= slidersItemLenght) {
+						index = 0;
+						positionX = 0;
+					}
+					dotActiveSlider();
+					sliderMain.style.transform = `translateX(${positionX}px)`;
+
+				}
+
+				function prevSlider() {
+					index--;
+					positionX += sliderItemWidth;
+					if (index < 0) {
+						index = slidersItemLenght - 1;
+						positionX = -(slidersLenght - sliderItemWidth);
+					}
+					dotActiveSlider();
+					sliderMain.style.transform = `translateX(${positionX}px)`;
+				}
+
+				function dotActiveSlider() {
+					doctItem.forEach(function(e) {
+						let docActive = Number(e.dataset.index);
+						if (index === (docActive)) {
+							$('.doct-item.active').classList.remove('active');
+
+							e.classList.add('active')
+						}
+
+					})
+				}
+			})
+		</script>
+	</footer>
+
+	<?php include(ABSPATH . 'wp-admin/admin-footer.php');
