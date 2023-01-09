@@ -220,6 +220,7 @@
 
 	.about-wrap {
 		max-width: unset;
+		margin: 10px 20px 0 2px
 	}
 
 	.wrap-content {
@@ -365,13 +366,15 @@
 
 	.noti__col--title h3 {
 		font-size: 15px;
-		line-height: 20px;
+		line-height: 24px;
 		margin: 0;
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 1;
+		-webkit-line-clamp: 2;
 		--webkit-user-select: none;
+		text-align: left;
+		padding: 0 10px;
 	}
 
 	.quict__item:hover {
@@ -451,6 +454,9 @@
 		width: 100%;
 		flex: 1 0 100%;
 		cursor: pointer;
+		text-decoration: none;
+		color: transparent;
+		display: block;
 	}
 
 	.slieder-img {
@@ -461,18 +467,23 @@
 	}
 
 	.btn-icon {
-		width: 30px;
-		height: 30px;
-		padding: unset !important;
+		width: 40px;
+		height: 40px;
+		/* padding: unset !important; */
 		/* display: none; */
 		text-align: center;
+		overflow: hidden;
+		padding: 6px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+		background-color: rgba(0, 0, 0, 0.3);
 	}
 
 	.btn {
 		font-size: 20px;
-		background-color: #fff;
 		position: absolute;
-		padding: 10px 14px;
 		border-radius: 50%;
 	}
 
@@ -484,13 +495,14 @@
 	.prev-btn {
 		top: 50%;
 		left: 0;
-		transform: translateX(-50%);
+
+		transform: translate(50%, -50%);
 	}
 
 	.next-btn {
 		top: 50%;
 		right: 0;
-		transform: translateX(50%);
+		transform: translate(-50%);
 	}
 
 	.icon {
@@ -518,11 +530,13 @@
 		border-radius: 50%;
 		margin: 0 6px;
 		cursor: pointer;
-		display: none;
+		/* display: none; */
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
 	}
 
 	.doct-item.active {
-		background-color: #27AE60;
+		background-color: #0D3380;
 	}
 
 	/*  */
@@ -617,7 +631,6 @@ if ($e = curl_error($getAPi)) {
 curl_close($getAPi);
 ?>
 
-
 <div class="wrap about-wrap">
 	<div class="wrap-content flex-block">
 		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -647,12 +660,35 @@ curl_close($getAPi);
 					<div class="item__block">
 						<div class="title__col">
 							<h3>
-								Giới thiệu về AME WEBSITE
+								Thông báo mới nhất
 							</h3>
 						</div>
 						<div href="#" class="noti__col--block">
 							<div href="#" class="noti__col--list">
-
+								<a href="#" class="noti__col--item">
+									<div class="noti__col--img">
+										<img src=<?php echo plugins_url('/img/icon_notifi.png', __FILE__) ?> alt="">
+									</div>
+									<div class="noti__col--title">
+										<h3>Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</h3>
+									</div>
+								</a>
+								<a href="#" class="noti__col--item">
+									<div class="noti__col--img">
+										<img src=<?php echo plugins_url('/img/icon_notifi.png', __FILE__) ?> alt="">
+									</div>
+									<div class="noti__col--title">
+										<h3>Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</h3>
+									</div>
+								</a>
+								<a href="#" class="noti__col--item">
+									<div class="noti__col--img">
+										<img src=<?php echo plugins_url('/img/icon_notifi.png', __FILE__) ?> alt="">
+									</div>
+									<div class="noti__col--title">
+										<h3>Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</h3>
+									</div>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -672,7 +708,7 @@ curl_close($getAPi);
 										if ($key <= 2) {
 								?>
 
-											<a href="#" class="noti__col--item">
+											<a target="_blank" href=<?php echo $post->link ?> class="noti__col--item">
 												<div class="noti__col--img">
 													<img src=<?php echo plugins_url('/img/post.png', __FILE__) ?> alt="">
 												</div>
@@ -834,18 +870,18 @@ curl_close($getAPi);
 						<?php if (!empty($listImage)) {
 							foreach ($listImage as $item) {
 						?>
-								<div class="slider-item">
+								<a href="#" class="slider-item">
 									<img src=<?php echo $item->guid->rendered ?> alt="" class="slieder-img">
-								</div>
+								</a>
 						<?php }
 						} ?>
 					</div>
 				</div>
 				<div class="btn btn-icon prev-btn">
-					<i class="fa-solid fa-arrow-left-long icon icon-slider icon-slider-left"></i>
+					<img src=<?php echo plugins_url('/img/left_icon.png', __FILE__) ?> alt="">
 				</div>
 				<div class="btn btn-icon next-btn">
-					<i class="fa-solid fa-arrow-right-long icon icon-slider icon-slider-right"></i>
+					<img src=<?php echo plugins_url('/img/right_icon.png', __FILE__) ?> alt="">
 				</div>
 				<div class="doct-slider">
 					<ul class="list-doct">
@@ -992,93 +1028,101 @@ curl_close($getAPi);
 			</div>
 		</div>
 	</div>
+</div>
+
+<footer>
+	<script type="text/javascript">
+		window.addEventListener('load', function() {
+			const $ = document.querySelector.bind(document);
+			const $$ = document.querySelectorAll.bind(document);
+			let doctActive = Number($('.doct-item.active').dataset.index);
+			const slider = $('.slider');
+			const sliderMain = $('.slider-main');
+			const nextBtn = $('.next-btn');
+			const prevBtn = $('.prev-btn');
+			const sliderItems = $$('.slider-item');
+			const doctItem = $$('.doct-item');
+			let positionX = 0;
+			let index = 0;
+
+			const sliderItemWidth = sliderItems[0].offsetWidth;
+			const slidersItemLenght = sliderItems.length;
+			const slidersLenght = sliderItemWidth * slidersItemLenght;
 
 
-	<footer>
-		<script type="text/javascript">
-			window.addEventListener('load', function() {
-				const $ = document.querySelector.bind(document);
-				const $$ = document.querySelectorAll.bind(document);
-				const slider = $('.slider');
-				const sliderMain = $('.slider-main');
-				const nextBtn = $('.next-btn');
-				const prevBtn = $('.prev-btn');
-				const sliderItems = $$('.slider-item');
-				const doctItem = $$('.doct-item');
-				let positionX = 0;
-				let index = 0;
 
-				const sliderItemWidth = sliderItems[0].offsetWidth;
-				const slidersItemLenght = sliderItems.length;
-				const slidersLenght = sliderItemWidth * slidersItemLenght;
+			nextBtn.onclick = function() {
+				nextSlider();
+			}
 
+			prevBtn.onclick = function() {
+				prevSlider();
+			}
 
-
-				nextBtn.onclick = function() {
+			let curentActive = doctActive;
+			setInterval(function() {
+				// if()
+				let doctCurrent = Number($('.doct-item.active').dataset.index);
+				if (curentActive == doctCurrent) {
 					nextSlider();
+				} else {
+					curentActive = doctCurrent;
 				}
+			}, 3000);
 
-				prevBtn.onclick = function() {
-					prevSlider();
-				}
+			// sliderItems.forEach(function(sliderItem) {
+			// 	sliderItem.onclick = function() {
+			// 		nextSlider();
+			// 	}
+			// })
 
-				setInterval(function() {
+			doctItem.forEach(function(e) {
+				e.onclick = function() {
+					let docActive = Number(e.dataset.index);
+					positionX = (-(docActive * sliderItemWidth) + sliderItemWidth);
+					index = docActive - 1;
 					nextSlider();
-				}, 3000);
-
-				sliderItems.forEach(function(sliderItem) {
-					sliderItem.onclick = function() {
-						nextSlider();
-					}
-				})
-
-				doctItem.forEach(function(e) {
-					e.onclick = function() {
-						let docActive = Number(e.dataset.index);
-						positionX = (-(docActive * sliderItemWidth) + sliderItemWidth);
-						index = docActive - 1;
-						nextSlider();
-						console.log(positionX, index)
-					}
-
-				})
-
-				function nextSlider() {
-					index++;
-					positionX -= sliderItemWidth;
-					if (index >= slidersItemLenght) {
-						index = 0;
-						positionX = 0;
-					}
-					dotActiveSlider();
-					sliderMain.style.transform = `translateX(${positionX}px)`;
-
+					console.log(positionX, index)
 				}
 
-				function prevSlider() {
-					index--;
-					positionX += sliderItemWidth;
-					if (index < 0) {
-						index = slidersItemLenght - 1;
-						positionX = -(slidersLenght - sliderItemWidth);
-					}
-					dotActiveSlider();
-					sliderMain.style.transform = `translateX(${positionX}px)`;
-				}
-
-				function dotActiveSlider() {
-					doctItem.forEach(function(e) {
-						let docActive = Number(e.dataset.index);
-						if (index === (docActive)) {
-							$('.doct-item.active').classList.remove('active');
-
-							e.classList.add('active')
-						}
-
-					})
-				}
 			})
-		</script>
-	</footer>
 
-	<?php include(ABSPATH . 'wp-admin/admin-footer.php');
+			function nextSlider() {
+				index++;
+				positionX -= sliderItemWidth;
+				if (index >= slidersItemLenght) {
+					index = 0;
+					positionX = 0;
+				}
+				dotActiveSlider();
+				sliderMain.style.transform = `translateX(${positionX}px)`;
+
+			}
+
+			function prevSlider() {
+				index--;
+				positionX += sliderItemWidth;
+				if (index < 0) {
+					index = slidersItemLenght - 1;
+					positionX = -(slidersLenght - sliderItemWidth);
+				}
+				dotActiveSlider();
+				sliderMain.style.transform = `translateX(${positionX}px)`;
+			}
+
+			function dotActiveSlider() {
+				doctItem.forEach(function(e) {
+					let docActive = Number(e.dataset.index);
+					if (index === (docActive)) {
+						$('.doct-item.active').classList.remove('active');
+
+						e.classList.add('active')
+					}
+
+				})
+			}
+		})
+	</script>
+</footer>
+
+<?php include(ABSPATH . 'wp-admin/admin-footer.php');
