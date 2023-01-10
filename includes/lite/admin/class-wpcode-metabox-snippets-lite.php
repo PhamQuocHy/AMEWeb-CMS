@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class used for the lite-specific metabox.
  *
@@ -8,7 +9,8 @@
 /**
  * Class WPCode_Metabox_Snippets_Lite.
  */
-class WPCode_Metabox_Snippets_Lite extends WPCode_Metabox_Snippets {
+class WPCode_Metabox_Snippets_Lite extends WPCode_Metabox_Snippets
+{
 
 	/**
 	 * Override the header tab content to make it specific to this class.
@@ -17,9 +19,10 @@ class WPCode_Metabox_Snippets_Lite extends WPCode_Metabox_Snippets {
 	 *
 	 * @return void
 	 */
-	public function output_tab_header( $post ) {
+	public function output_tab_header($post)
+	{
 		$this->form_for_scripts(
-			__( 'Header', 'insert-headers-and-footers' )
+			__('Header', 'insert-headers-and-footers')
 		);
 	}
 
@@ -30,9 +33,10 @@ class WPCode_Metabox_Snippets_Lite extends WPCode_Metabox_Snippets {
 	 *
 	 * @return void
 	 */
-	public function output_tab_footer( $post ) {
+	public function output_tab_footer($post)
+	{
 		$this->form_for_scripts(
-			__( 'Footer', 'insert-headers-and-footers' )
+			__('Footer', 'insert-headers-and-footers')
 		);
 	}
 
@@ -43,9 +47,10 @@ class WPCode_Metabox_Snippets_Lite extends WPCode_Metabox_Snippets {
 	 *
 	 * @return void
 	 */
-	public function output_tab_body( $post ) {
+	public function output_tab_body($post)
+	{
 		$this->form_for_scripts(
-			__( 'Body', 'insert-headers-and-footers' )
+			__('Body', 'insert-headers-and-footers')
 		);
 	}
 
@@ -56,35 +61,36 @@ class WPCode_Metabox_Snippets_Lite extends WPCode_Metabox_Snippets {
 	 *
 	 * @return void
 	 */
-	public function output_tab_code( $post ) {
-		?>
+	public function output_tab_code($post)
+	{
+?>
 		<div class="wpcode-blur-area">
 			<p>
-				<?php esc_html_e( 'Choose the snippets you want to run on this page. Please note: only active snippets will be executed.', 'wpcode-premium' ); ?>
+				<?php esc_html_e('Choose the snippets you want to run on this page. Please note: only active snippets will be executed.', 'wpcode-premium'); ?>
 			</p>
 			<div class="wpcode-metabox-snippets">
 				<div id="wpcode-snippet-chooser">
 					<h3>
-						<?php esc_html_e( 'Select snippets', 'wpcode-premium' ); ?>
+						<?php esc_html_e('Select snippets', 'wpcode-premium'); ?>
 						<button class="wpcode-button-just-icon wpcode-drawer-toggle" id="wpcode-close-drawer">
-							<?php wpcode_icon( 'close' ); ?>
+							<?php wpcode_icon('close'); ?>
 						</button>
 					</h3>
 					<div class="wpcode-snippets-search">
-						<input type="text" id="wpcode-search-snippets" class="wpcode-input-text" placeholder="<?php esc_attr_e( 'Search snippets', 'wpcode-premium' ); ?>"/>
+						<input type="text" id="wpcode-search-snippets" class="wpcode-input-text" placeholder="<?php esc_attr_e('Search snippets', 'wpcode-premium'); ?>" />
 						<span class="wpcode-loading-spinner" id="wpcode-chooser-spinner"></span>
 					</div>
 					<div class="wpcode-chooser-fixed-height">
 						<div id="wpcode-choose-snippets"></div>
 						<div class="wpcode-choose-actions">
-							<button type="button" class="wpcode-button wpcode-button-secondary" id="wpcode-metabox-load-more"><?php esc_html_e( 'Load more snippets', 'wpcode-premium' ); ?></button>
+							<button type="button" class="wpcode-button wpcode-button-secondary" id="wpcode-metabox-load-more"><?php esc_html_e('Load more snippets', 'wpcode-premium'); ?></button>
 						</div>
 					</div>
 				</div>
 				<div class="wpcode-picked-snippets-area">
 					<h3>
 						<button class="wpcode-button wpcode-drawer-toggle" id="wpcode-add-snippet-toggle" type="button">
-							<?php esc_html_e( '+ Choose Snippet', 'wpcode-premium' ); ?>
+							<?php esc_html_e('+ Choose Snippet', 'wpcode-premium'); ?>
 						</button>
 					</h3>
 					<div id="wpcode-picked-snippets">
@@ -134,20 +140,20 @@ class WPCode_Metabox_Snippets_Lite extends WPCode_Metabox_Snippets {
 				</div>
 			</div>
 		</div>
-		<?php
+	<?php
 		echo WPCode_Admin_Page::get_upsell_box( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			__( 'Page Scripts is a Pro Feature', 'insert-headers-and-footers' ),
+			__('Page Scripts is a Pro Feature', 'insert-headers-and-footers'),
 			sprintf(
 				'<p>%s</p>',
-				esc_html__( 'Upgrade to WPCode Pro and easily add page-specific scripts and snippets directly from the post edit screen.', 'insert-headers-and-footers' )
+				esc_html__('Upgrade to WPCode Pro and easily add page-specific scripts and snippets directly from the post edit screen.', 'insert-headers-and-footers')
 			),
 			array(
-				'text' => esc_html__( 'Upgrade to Pro and Unlock Page Scripts', 'insert-headers-and-footers' ),
-				'url'  => wpcode_utm_url( 'https://wpcode.com/lite/', 'post-editor-metabox', 'custom-snippets', 'upgrade-to-pro' ),
+				'text' => esc_html__('Upgrade to Pro and Unlock Page Scripts', 'insert-headers-and-footers'),
+				'url'  => wpcode_utm_url('https://wpcode.com/lite/', 'post-editor-metabox', 'custom-snippets', 'upgrade-to-pro'),
 			),
 			array(
-				'text' => esc_html__( 'Learn more about all the features', 'insert-headers-and-footers' ),
-				'url'  => wpcode_utm_url( 'https://wpcode.com/lite/', 'post-editor-metabox', 'custom-snippets', 'features' ),
+				'text' => esc_html__('Learn more about all the features', 'insert-headers-and-footers'),
+				'url'  => wpcode_utm_url('https://wpcode.com/lite/', 'post-editor-metabox', 'custom-snippets', 'features'),
 			)
 		);
 	}
@@ -159,27 +165,28 @@ class WPCode_Metabox_Snippets_Lite extends WPCode_Metabox_Snippets {
 	 *
 	 * @return void
 	 */
-	public function form_for_scripts( $label ) {
-		wp_enqueue_style( 'code-editor' );
-		?>
+	public function form_for_scripts($label)
+	{
+		wp_enqueue_style('code-editor');
+	?>
 		<div class="wpcode-blur-area">
 			<p>
 				<?php
 				printf(
-				// Translators: placeholder for the name of the section (header or footer).
-					esc_html__( 'Add scripts below to the %s section of this page.', 'insert-headers-and-footers' ),
-					esc_html( $label )
+					// Translators: placeholder for the name of the section (header or footer).
+					esc_html__('Add scripts below to the %s section of this page.', 'insert-headers-and-footers'),
+					esc_html($label)
 				);
 				?>
 			</p>
 			<p>
 				<label>
-					<input type="checkbox"/>
+					<input type="checkbox" />
 					<?php
 					printf(
-					// Translators: placeholder for the name of the section (header or footer).
-						esc_html__( 'Disable global %s scripts on this page', 'insert-headers-and-footers' ),
-						esc_html( $label )
+						// Translators: placeholder for the name of the section (header or footer).
+						esc_html__('Disable global %s scripts on this page', 'insert-headers-and-footers'),
+						esc_html($label)
 					);
 					?>
 				</label>
@@ -188,18 +195,18 @@ class WPCode_Metabox_Snippets_Lite extends WPCode_Metabox_Snippets {
 				<label>
 					<?php
 					printf(
-					// Translators: placeholder for the name of the section (header or footer).
-						esc_html__( '%s - any device type', 'insert-headers-and-footers' ),
-						esc_html( $label )
+						// Translators: placeholder for the name of the section (header or footer).
+						esc_html__('%s - any device type', 'insert-headers-and-footers'),
+						esc_html($label)
 					);
 					?>
 				</label>
 				<div class="wpcode-smart-tags">
 					<button class="wpcode-smart-tags-toggle">
-						<?php wpcode_icon( 'tags', 20, 16, '0 0 20 16' ); ?>
+						<?php wpcode_icon('tags', 20, 16, '0 0 20 16'); ?>
 						<span class="wpcode-text-default">
-					<?php esc_html_e( 'Show Smart Tags', 'insert-headers-and-footers' ); ?>
-					</span>
+							<?php esc_html_e('Show Smart Tags', 'insert-headers-and-footers'); ?>
+						</span>
 					</button>
 				</div>
 				<div class="CodeMirror cm-s-default CodeMirror-wrap">
@@ -277,20 +284,20 @@ class WPCode_Metabox_Snippets_Lite extends WPCode_Metabox_Snippets {
 				</div>
 			</div>
 		</div>
-		<?php
+<?php
 		echo WPCode_Admin_Page::get_upsell_box( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			__( 'Page Scripts is a Pro Feature', 'insert-headers-and-footers' ),
+			__('Page Scripts is a Pro Feature', 'insert-headers-and-footers'),
 			sprintf(
 				'<p>%s</p>',
-				esc_html__( 'Upgrade to WPCode Pro and easily add page-specific scripts and snippets directly from the post edit screen.', 'insert-headers-and-footers' )
+				esc_html__('Upgrade to WPCode Pro and easily add page-specific scripts and snippets directly from the post edit screen.', 'insert-headers-and-footers')
 			),
 			array(
-				'text' => esc_html__( 'Upgrade to Pro and Unlock Page Scripts', 'insert-headers-and-footers' ),
-				'url'  => wpcode_utm_url( 'https://wpcode.com/lite/', 'post-editor-metabox', 'main-' . sanitize_title( $label ), 'upgrade-to-pro' ),
+				'text' => esc_html__('Upgrade to Pro and Unlock Page Scripts', 'insert-headers-and-footers'),
+				'url'  => wpcode_utm_url('https://wpcode.com/lite/', 'post-editor-metabox', 'main-' . sanitize_title($label), 'upgrade-to-pro'),
 			),
 			array(
-				'text' => esc_html__( 'Learn more about all the features', 'insert-headers-and-footers' ),
-				'url'  => wpcode_utm_url( 'https://wpcode.com/lite/', 'post-editor-metabox', 'main-' . sanitize_title( $label ), 'features' ),
+				'text' => esc_html__('Learn more about all the features', 'insert-headers-and-footers'),
+				'url'  => wpcode_utm_url('https://wpcode.com/lite/', 'post-editor-metabox', 'main-' . sanitize_title($label), 'features'),
 			)
 		);
 	}

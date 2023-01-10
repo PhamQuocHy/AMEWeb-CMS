@@ -110,8 +110,10 @@ class WPCode_Admin_Page_Loader
 		$wpcode_icon = 'data:image/svg+xml;base64,' . base64_encode($svg); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 
 		add_menu_page(
-			__('Code Snippets', 'insert-headers-and-footers'),
-			__('Code Snippets', 'insert-headers-and-footers'),
+			// __('Code Snippets', 'insert-headers-and-footers'),
+			// __('Code Snippets', 'insert-headers-and-footers'),
+			__('Tùy Biến Code', 'insert-headers-and-footers'),
+			__('Tùy Biến Code', 'insert-headers-and-footers'),
 			'wpcode_edit_snippets',
 			'wpcode',
 			array(
