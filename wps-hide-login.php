@@ -15,6 +15,9 @@ License: GPLv2 or later
 License URI: https://amedigital.vn/
 */
 
+use ElementorPro\Modules\Forms\Actions\Redirect;
+
+ob_start();
 
 if (!defined('ABSPATH')) {
 	die('-1');
@@ -543,7 +546,7 @@ if (!class_exists('ACF')) {
 			<div class="updated" style="border-left: 4px solid #ffba00;">
 				<p><?php echo esc_html($message); ?></p>
 			</div>
-<?php
+			<?php
 
 			delete_transient('acf_deactivated_notice_id');
 		}

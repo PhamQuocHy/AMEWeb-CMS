@@ -809,7 +809,7 @@ curl_close($getAPi);
 					</div>
 
 					<div class="col l-4">
-						<a href="#" class="quict__item">
+						<a href="<?php echo admin_url() ?>admin.php?page=wpcode" class="quict__item">
 							<div class="quict__item--img">
 								<img src="<?php echo plugins_url('/img/code.png', __FILE__) ?>" />
 							</div>
@@ -828,7 +828,8 @@ curl_close($getAPi);
 					</div>
 
 					<div class="col l-4">
-						<a href="#" class="quict__item">
+						<a href="<?php echo admin_url() ?>/themes.php?page=so_custom_css" class="quict__item">
+
 							<div class="quict__item--img">
 								<img src="<?php echo plugins_url('/img/css.png', __FILE__) ?>" />
 							</div>
