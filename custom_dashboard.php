@@ -1,4 +1,5 @@
 <style>
+
 	* {
 		box-sizing: inherit;
 	}
@@ -32,6 +33,55 @@
 		right: 25px;
 
 	}
+	.tooltip {
+  position: relative;
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+.tooltip::before,
+.tooltip::after {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease-in-out;
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  z-index: 2;
+  width: 210px;
+  color: #fff;
+  background: rgba(0,0,0, .7);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.tooltip::after {
+  content: "";
+  width: 0;
+  height: 0;
+}
+.tooltip--left::before,
+.tooltip--left::after {
+  top: 50%;
+  right: 100%;
+  transform: translate(0, -50%);
+  margin-right: 15px;
+}
+
+.tooltip--left::after {
+  margin-right: 8px;
+  border-top: 5px solid transparent;
+  border-left: 7px solid rgba(0,0,0, .7);
+  border-bottom: 5px solid transparent;
+}
 
 	.wrapper .fab {
 		background: var(--background);
@@ -1019,10 +1069,10 @@ curl_close($getAPi);
 					<input type="checkbox" />
 					<div class="icon" style="margin-top:-50px"><lottie-player src="https://assets3.lottiefiles.com/packages/lf20_KYGZ3gt17d.json" background="transparent" speed="1" style="width: 80px; height: 80px;" loop autoplay></lottie-player></div>
 					<div class="fac" style="margin-top: -50px">
-						<a href="https://amedigital.vn"><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-book.png', __FILE__) ?>" /></a>
-						<a href="https://www.facebook.com/amedigital.vn"><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-face.png', __FILE__) ?>" /></a>
-						<a href="tel: 0292 8881 929"><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-phone.png', __FILE__) ?>" /></a>
-						<a href="https://www.facebook.com/messages/t/305273516225421"><img style="width: 40px; height: 40px;" src="<?php echo plugins_url('/img/icon-mess.png', __FILE__) ?>" /></a>
+						<a href="https://amedigital.vn" class="tooltip tooltip--left" data-tooltip="Tài liệu hướng dẫn"><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-book.png', __FILE__) ?>" /></a>
+						<a href="https://www.facebook.com/amedigital.vn"class="tooltip tooltip--left" data-tooltip="Cộng đồng AME Website" ><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-face.png', __FILE__) ?>" /></a>
+						<a href="tel: 0292 8881 929" class="tooltip tooltip--left" data-tooltip="Hotline hỗ trợ"><img style="width: 40px; height: 40px; margin-bottom: 20px" src="<?php echo plugins_url('/img/icon-phone.png', __FILE__) ?>" /></a>
+						<a href="https://www.facebook.com/messages/t/305273516225421" class="tooltip tooltip--left" data-tooltip="Đóng góp ý kiến"><img style="width: 40px; height: 40px;" src="<?php echo plugins_url('/img/icon-mess.png', __FILE__) ?>" /></a>
 					</div>
 				</div>
 			</div>
